@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RepositoriesService } from '../shared/services/repositories.service';
 
 @Component({
   selector: 'app-repositories',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./repositories.component.css']
 })
 export class RepositoriesComponent implements OnInit {
-
-  constructor() { }
+  jsonFiles: File;
+  constructor(private repositoryService: RepositoriesService) { }
 
   ngOnInit() {
+  }
+
+  showRepositories() {
+    this.repositoryService.getUsers(this.jsonFiles);
+  }
+
+  getJSON(event) {
+    this.jsonFiles = event.target.files[0];
   }
 
 }

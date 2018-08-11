@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RepositoriesService {
 
-  url = 'http://localhost:4200';
+  constructor() {  }
 
-  constructor(private http: HttpClient) {  }
-
-  getUsers() {
-     return this.http.get(this.url + '/users');
+  getUsers(file) {
+    const reader: FileReader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = (e) => {
+      const loadFile: string = reader.result;
+      console.log(JSON.stringify(loadFile));
+    };
   }
 }
