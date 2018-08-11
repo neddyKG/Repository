@@ -9,14 +9,14 @@ import { Repository } from '../shared/models/repository';
 })
 export class RepositoriesComponent implements OnInit {
 
-  userList: Repository[];
+  repositoryList: Repository[];
 
   constructor(private repositoryService: RepositoriesService) { }
 
   ngOnInit() {
     this.showRepositories().subscribe((response) => {
-      this.userList = response;
-      console.log(this.userList);
+      this.repositoryList = response;
+      console.log(this.repositoryList);
     });
   }
 
