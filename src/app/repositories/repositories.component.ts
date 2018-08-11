@@ -7,18 +7,20 @@ import { RepositoriesService } from '../shared/services/repositories.service';
   styleUrls: ['./repositories.component.css']
 })
 export class RepositoriesComponent implements OnInit {
-  jsonFiles: File;
+
+  userList = [];
+
   constructor(private repositoryService: RepositoriesService) { }
 
   ngOnInit() {
+    this.showRepositories().subscribe((response) => {
+      this.userList = response;
+      console.log(this.userList);
+    });
   }
 
   showRepositories() {
-    this.repositoryService.getUsers(this.jsonFiles);
-  }
-
-  getJSON(event) {
-    this.jsonFiles = event.target.files[0];
+   return this.repositoryService.getUsers();
   }
 
 }

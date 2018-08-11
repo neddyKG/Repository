@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RepositoriesService {
 
-  constructor() {  }
+  constructor(private http: HttpClient) { }
 
-  getUsers(file) {
-    const reader: FileReader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = (e) => {
-      const loadFile: string = reader.result;
-      console.log(JSON.stringify(loadFile));
-    };
+  getUsers(): Observable<any> {
+    return this.http.get('../../../assets/data/exp.json');
   }
+
 }
