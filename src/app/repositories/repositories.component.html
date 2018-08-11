@@ -7,7 +7,7 @@
   </div>
 </nav>
 
-<div>
+<table  class="table table-hover tbl" >
   <thead>
     <tr>
       <th scope="col">User Avatar</th>
@@ -18,11 +18,16 @@
   </thead>
   <tbody>
     <tr class="table-light" *ngFor="let repository of repositoryList">
-      <td><img src="{{repository.avatar_url}}"></td>
-      <td>{{repository.name}}</td>
-      <td>{{repository.nickName}}</td>
+      <ng-container *ngIf="repository.avatar_url">
+          <td><img src="{{repository.avatar_url}}"></td>
+      </ng-container>
+      <ng-container *ngIf="!repository.avatar_url">
+          <td><img src="../../assets//default-avatar.jpg" style="width: 200px; height:200px"></td>
+      </ng-container>
+      <td class="text">{{repository.name}}</td>
+      <td class = "text">{{repository.nickName}}</td>
       <td><a href="{{repository.github_url}}">Go to link</a></td>
     </tr>
   </tbody>
-</div>
+</table>
 
