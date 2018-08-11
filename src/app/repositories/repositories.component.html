@@ -8,8 +8,21 @@
 </nav>
 
 <div>
-<tr *ngFor="let ">
-<td></td>
-</tr>
+  <thead>
+    <tr>
+      <th scope="col">User Avatar</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Nickname</th>
+      <th scope="col">Link to Github</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light" *ngFor="let repository of repositoryList">
+      <td><img src="{{repository.avatar_url}}"></td>
+      <td>{{repository.name}}</td>
+      <td>{{repository.nickName}}</td>
+      <td><a href="{{repository.github_url}}">Go to link</a></td>
+    </tr>
+  </tbody>
 </div>
 
