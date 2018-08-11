@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoriesService } from '../shared/services/repositories.service';
+import { Repository } from '../shared/models/repository';
 
 @Component({
   selector: 'app-repositories',
@@ -8,7 +9,7 @@ import { RepositoriesService } from '../shared/services/repositories.service';
 })
 export class RepositoriesComponent implements OnInit {
 
-  userList = [];
+  userList: Repository[];
 
   constructor(private repositoryService: RepositoriesService) { }
 
