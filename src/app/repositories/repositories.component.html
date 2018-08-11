@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']">Home</a>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+  </div>
+</nav>
+
+<table  class="table table-hover tbl" >
+  <thead>
+    <tr>
+      <th scope="col">User Avatar</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Nickname</th>
+      <th scope="col">Link to Github</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light" *ngFor="let repository of repositoryList">
+      <ng-container *ngIf="repository.avatar_url">
+          <td><img src="{{repository.avatar_url}}"></td>
+      </ng-container>
+      <ng-container *ngIf="!repository.avatar_url">
+          <td><img src="../../assets//default-avatar.jpg" style="width: 200px; height:200px"></td>
+      </ng-container>
+      <td class="text">{{repository.name}}</td>
+      <td class = "text">{{repository.nickName}}</td>
+      <td><a href="{{repository.github_url}}">Go to link</a></td>
+    </tr>
+  </tbody>
+</table>
+
